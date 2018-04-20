@@ -3441,11 +3441,15 @@ table.alt tfoot {
 }
 
 .wrapper.style3 {
-  background-color: #b74e91;
+  background-color: #5052b5;
 }
 
 .wrapper.style3-alt {
-  background-color: #953d75;
+  background-color: #ffffff;
+}
+
+.wrapper.style4 {
+  background-color: #5052b5;
 }
 
 .wrapper.fullscreen {
@@ -4047,6 +4051,15 @@ body.is-loading #sidebar nav ul li {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
+#three {
+  background-attachment: fixed;
+  background-image: url("images/intro.svg");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 
 #intro p {
   font-size: 1.25em;
