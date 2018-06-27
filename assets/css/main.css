@@ -2818,6 +2818,28 @@ input, select, textarea {
 			border-radius: 20vh;
 		}
 
+		.features section{
+			width: calc(33.3333333% - 2em);
+			margin-left: 2vw;
+			margin-top: 3vh;
+			padding: 0;
+		}
+
+		.features .projectsection{
+			/* width: calc(33.3333333333% - 2vw); */
+			margin-left: 2vw;
+			margin-top: 2vh;
+			position: relative;
+			float: left;
+			padding: 0;
+		}
+		
+		/* .features section #projectlogo img{
+			width: 30vh;
+			height: 30vh;
+			border-radius: 20vh;
+		} */
+
 			.features li:nth-child(1), .features li:nth-child(2), .features li:nth-child(3) {
 				margin-top: 0;
 			}
@@ -2857,19 +2879,6 @@ input, select, textarea {
 
 		}
 
-		.features section {
-			align-content: center;
-			width: calc(33.3333333333% - 2em);
-			margin-left: 2vw;
-			margin-top: 3vh;
-			padding: 0;
-		}
-		
-		.features section #projectlogo img{
-			width: 30vh;
-			height: 30vh;
-			border-radius: 20vh;
-		}
 
 /* Statistics */
 
