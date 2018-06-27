@@ -103,7 +103,7 @@ input, select, textarea {
 		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
 		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
 		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
+		background-image: url("images/overlay.png"), linear-gradient(45deg, #000000 15%, #5f4d93 85%);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -2815,7 +2815,8 @@ input, select, textarea {
 		.features li #companylogo img{
 			width: 30vh;
 			height: 30vh;
-			border-radius: 20vh;
+			border-radius: 100%;
+			
 		}
 
 		.features section{
@@ -2834,14 +2835,34 @@ input, select, textarea {
 			padding: 0;
 		}
 		
-		/* .features section #projectlogo img{
-			width: 30vh;
-			height: 30vh;
-			border-radius: 20vh;
-		} */
+		.features .projectsection #projectlogo img{
+			width: 25vh;
+			height: 25vh;
+			border-radius: 100%;
+		}
+
+		.features .educationsection{
+			/* width: calc(33.3333333333% - 2vw); */
+			margin-left: 2vw;
+			margin-top: 2vh;
+			position: relative;
+			float: left;
+			padding: 0;
+		}
+		
+		.features .educationsection #educationlogo img{
+			width: 25vh;
+			height: 25vh;
+		}
 
 			.features li:nth-child(1), .features li:nth-child(2), .features li:nth-child(3) {
 				margin-top: 0;
+			}
+
+			.features li:nth-child(3) #companylogo img{
+				border-color: #5f4d93;
+				border-style: outset;
+				border-width: 0.2em;
 			}
 
 			.features li > :last-child {
@@ -3024,12 +3045,14 @@ input, select, textarea {
 			padding: 0.65em;
 			border-radius: 100%;
 			border: solid 1px;
+						
 		}
 
 			.spotlight .image img {
 				display: block;
 				border-radius: 100%;
 				width: 16em;
+				
 			}
 
 		@media screen and (max-width: 980px) {
