@@ -2792,16 +2792,15 @@ input, select, textarea {
 		list-style: none;
 	}
 
-		/* .features li {
+		.features li {
 			width: calc(33.3333333333% - 2em);
-			margin-left: 50%;
-			margin-right: 50%;
+			margin-left: 2vw;
+			margin-top: 3vh;
 			padding: 0;
-		} */
+		}
 
 		.features .internship{
-			display: inline-block;
-			width: calc(33.3333333333% - 2vw);
+			/* width: calc(33.3333333333% - 2vw); */
 			margin-left: 2vw;
 			margin-top: 0vh;
 			padding: 0;
@@ -2810,6 +2809,7 @@ input, select, textarea {
 		.features .fte{
 			margin-bottom: 2em;
 			margin-left: 2vw;
+			width: 100vw;
 		}
 
 		.features li #companylogo img{
