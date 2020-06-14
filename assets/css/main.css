@@ -2825,7 +2825,7 @@ input, select, textarea {
 		.features .fte{
 			margin-bottom: 2em;
 			margin-left: 2vw;
-			width: 100vw;
+			width: 25vw;
 		}
 
 		.features li #companylogo img{
@@ -3060,7 +3060,7 @@ input, select, textarea {
 			margin-left: 4em;
 			padding: 0.65em;
 			border-radius: 100%;
-			border: solid 1px;
+			border: solid 10px;
 						
 		}
 
@@ -3368,7 +3368,7 @@ input, select, textarea {
 			position: fixed;
 			top: 0;
 			padding: 0.5em 1em;
-			background-color: rgba(247, 247, 247, 0.95);
+			background-color: #cbcbd1;
 			border-top-left-radius: 0;
 			border-top-right-radius: 0;
 			z-index: 10000;
