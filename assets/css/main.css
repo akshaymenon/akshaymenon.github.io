@@ -2823,9 +2823,11 @@ input, select, textarea {
 		}
 
 		.features .fte{
-			margin-bottom: 2em;
+			/* margin-bottom: 2em; */
 			margin-left: 2vw;
-			width: 25vw;
+			margin-top: 0vh;
+			padding: 0;
+			/* width: 25vw; */
 		}
 
 		.features li #companylogo img{
