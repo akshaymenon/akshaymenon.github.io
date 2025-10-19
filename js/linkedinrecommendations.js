@@ -26,34 +26,75 @@ const testimonials = [
     }    
 ];
 
+/**
+ * Builds a single testimonial element from the provided data.
+ * Using DOM APIs instead of string concatenation protects against accidental HTML injection.
+ */
+function buildTestimonial(testimonial) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'testimonial';
+
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'img';
+
+    const image = document.createElement('img');
+    image.src = testimonial.imgSrc;
+    image.alt = testimonial.author;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    imageWrapper.appendChild(image);
+
+    const textWrapper = document.createElement('div');
+    textWrapper.className = 'text';
+    const testimonialText = document.createElement('p');
+    testimonialText.textContent = testimonial.text;
+    textWrapper.appendChild(testimonialText);
+
+    const authorInfo = document.createElement('div');
+    authorInfo.className = 'author-info';
+
+    const authorName = document.createElement('h4');
+    authorName.className = 'author';
+    authorName.textContent = testimonial.author;
+
+    const authorCompany = document.createElement('h5');
+    authorCompany.className = 'company';
+    authorCompany.textContent = testimonial.company;
+
+    const iconWrapper = document.createElement('div');
+    iconWrapper.className = 'icon';
+    const quoteIcon = document.createElement('i');
+    quoteIcon.className = 'fas fa-quote-right';
+    quoteIcon.setAttribute('aria-hidden', 'true');
+    iconWrapper.appendChild(quoteIcon);
+
+    authorInfo.appendChild(authorName);
+    authorInfo.appendChild(authorCompany);
+    authorInfo.appendChild(iconWrapper);
+
+    wrapper.appendChild(imageWrapper);
+    wrapper.appendChild(textWrapper);
+    wrapper.appendChild(authorInfo);
+
+    return wrapper;
+}
+
 // Function to dynamically generate testimonials
 function generateTestimonials() {
     const testimonialContainer = document.getElementById('testimonial-carousel');
 
-    // Loop through testimonials and create HTML for each
-    testimonials.forEach((testimonial) => {
-        const testimonialHTML = `
-                <div class="testimonial">
-                    <div class="img">
-                        <img src="${testimonial.imgSrc}" alt="${testimonial.author}">
-                    </div>
-                    <div class="text">
-                        <p>${testimonial.text}</p>
-                    </div>
-                    <div class="author-info">
-                        <h4 class="author">${testimonial.author}</h4>
-                        <h5 class="company">${testimonial.company}</h5>
-                        <div class="icon">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                    </div>
-                </div>
-            `;
+    if (!testimonialContainer) {
+        return;
+    }
 
-        // Add the testimonial HTML to the container
-        testimonialContainer.insertAdjacentHTML('beforeend', testimonialHTML);
+    // Loop through testimonials and render each entry
+    testimonials.forEach((testimonial) => {
+        testimonialContainer.appendChild(buildTestimonial(testimonial));
     });
 }
 
-// Call the function to generate testimonials
-generateTestimonials();
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', generateTestimonials);
+} else {
+    generateTestimonials();
+}

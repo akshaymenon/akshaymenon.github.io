@@ -61,6 +61,10 @@ body {
   background-size: cover;
 }
 
+.u-mb-sm {
+  margin-bottom: 20px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: #eee;
   font-family: 'Poppins', Helvetica, sans-serif;
@@ -1276,6 +1280,76 @@ textarea.form-control, textarea.form-control:focus {
 .timeline-second-style .item-logo img {
   max-height: 40px;
 }
+
+.timeline-second-style .item-role {
+  margin: 0 0 6px;
+}
+
+.timeline-second-style .item-meta {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #a6a7c4;
+}
+
+.timeline-details {
+  margin: 0;
+  padding-left: 18px;
+  color: #d2d3e0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.timeline-details li + li {
+  margin-top: 8px;
+}
+
+.timeline-details[data-collapsible].is-collapsed {
+  max-height: 8.8em;
+  overflow: hidden;
+  position: relative;
+}
+
+.timeline-details[data-collapsible].is-collapsed::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2.6em;
+  background: linear-gradient(0deg, rgba(16, 17, 35, 0.95) 0%, rgba(16, 17, 35, 0) 100%);
+}
+
+.timeline-toggle {
+  background: none;
+  border: 0;
+  color: #8c8dff;
+  font-size: 13px;
+  padding: 6px 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.timeline-toggle:hover,
+.timeline-toggle:focus {
+  color: #b5b6ff;
+  outline: none;
+}
+
+.timeline-toggle.is-hidden {
+  display: none;
+}
+
+.resume-download {
+  color: #a6a7c4;
+  font-size: 14px;
+}
+
+.resume-download .certi-link {
+  margin-left: 6px;
+}
 /* --- End Timeline (Education & Experience) --- */
 
 /* --- Skills --- */
@@ -1410,8 +1484,44 @@ textarea.form-control, textarea.form-control:focus {
   margin: 3px 2px;
   font-size: 13px;
 }
+
+.resume-skill-group {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 16px 18px 20px;
+}
+
+.resume-skill-group__title {
+  margin: 0 0 12px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a6a7c4;
+  font-weight: 600;
+}
+
+.chip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background-color: #5050f5;
+  border-radius: 999px;
+  color: #fff;
+  padding: 4px 14px;
+  font-size: 13px;
+  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+}
 /* --- End of Knowledges --- */
 
+/* --- Resume Modals --- */
 /* --- Certificates --- */
 .certificate-item {
   position: relative;
@@ -1465,6 +1575,78 @@ textarea.form-control, textarea.form-control:focus {
   font-size: .7em;
   color: #777;
   opacity: .7;
+}
+
+.certi-link {
+  color: inherit;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.certi-link:hover,
+.certi-link:focus {
+  color: #5050f5;
+  border-color: #5050f5;
+  text-decoration: none;
+}
+
+.certificate-list--extra {
+  display: none;
+  margin-top: 24px;
+}
+
+.certificate-list--extra.is-expanded {
+  display: block;
+}
+
+.certificate-list--compact {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0 0;
+}
+
+.certificate-list--compact li {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+
+.certificate-list--compact strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.certificate-list--compact span {
+  color: #a6a7c4;
+  font-size: 13px;
+}
+
+.certi-logo--text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #444;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.certi-card--compact .certi-content {
+  padding: 20px 25px;
+}
+
+.certi-card--compact .certi-title h4 {
+  margin-bottom: 6px;
+}
+
+.certi-card--compact .certi-company {
+  font-size: 13px;
+  color: #a6a7c4;
 }
 /* --- End of Certificates --- */
 
@@ -2943,4 +3125,3 @@ blockquote {
     font-size: 18px;
   }
 }
-
