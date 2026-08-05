@@ -120,9 +120,9 @@ p {
 
 h2 {
   margin-bottom: 1.05rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 560;
+  color: var(--text);
+  font-size: 1.16rem;
+  font-weight: 650;
   letter-spacing: 0;
 }
 
