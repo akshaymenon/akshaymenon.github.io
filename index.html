@@ -17,10 +17,10 @@
   <meta name="description" content="Solutions Engineer building agents, data products, automation systems, and measurement tools across software, AdTech, and applied AI.">
   <meta name="author" content="Akshay Menon">
   <meta name="keywords" content="Akshay Menon, Applied AI, solutions engineer, agents, RAG, automation, measurement, AdTech">
-  <meta name="theme-color" content="#fbfaf7">
+  <meta name="theme-color" content="#f6f2e9">
   <link rel="canonical" href="https://akshay-menon.com/">
   <link rel="shortcut icon" href="favicon.ico">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css?v=20261012">
 
   <meta property="og:title" content="Akshay Menon">
   <meta property="og:description" content="Building agents, data products, automation systems, and measurement tools across software, AdTech, and applied AI.">
@@ -61,13 +61,21 @@
 </head>
 
 <body>
+  <div class="illustrations" aria-hidden="true">
+    <img class="illustration illustration--verandah" src="img/kerala-verandah.webp" alt="" decoding="async">
+    <img class="illustration illustration--backwater" src="img/kochi-backwater.webp" alt="" decoding="async">
+  </div>
   <a class="skip-link" href="#content">Skip to content</a>
 
   <main id="content" class="page">
+    <nav class="site-nav" aria-label="Page sections">
+      <a class="monogram" href="#content" aria-label="Akshay Menon, back to top">AM</a>
+      <div class="section-links"><a href="#experience-title">Experience</a><a href="#projects-title">Projects</a><a href="#education-title">Education</a></div>
+    </nav>
     <header class="intro">
       <h1>Akshay Menon</h1>
       <p class="role">Associate Solutions Engineer</p>
-      <p>Engineer by training, problem-solver by nature.</p>
+      <p class="intro-lead">Engineer by training, problem-solver by nature.</p>
       <p>I build measurement solutions, agents, data products, and automation systems that turn messy business problems into working tools. Currently at <a href="https://www.wearemiq.com/" target="_blank" rel="noopener noreferrer">MiQ</a>, working across AdTech, and customer-facing technical delivery.</p>
       <p>I’ve worked in software, data, advertising, and AI, and I just like making things work. I’ve shipped software, run campaigns, built agents, and automated away the boring stuff.</p>
 
@@ -127,14 +135,20 @@
         <article>
           <h3><a href="https://coverdriveclub.in/" target="_blank" rel="noopener noreferrer">CoverDriveClub.in</a> - Founder &amp; Operator</h3>
           <p>Founded and operate an India-focused cricket apparel brand, covering product strategy, creative direction, storefront operations and growth experimentation.</p>
-          <p>Alongside the business, I built a lean AI-assisted operating system using Hermes Agent. It uses reusable skills, scheduled jobs and tool integrations to support research, product development, creative workflows, e-commerce reporting and campaign analysis.</p>
+          <details class="project-details">
+            <summary>More about the project</summary>
+            <p>Alongside the business, I built a lean AI-assisted operating system using Hermes Agent. It uses reusable skills, scheduled jobs and tool integrations to support research, product development, creative workflows, e-commerce reporting and campaign analysis.</p>
           <p>The system connects workflows across Google Workspace, Shopify, Meta Ads and Discord. Actions are deliberately scoped: agents handle research, preparation and monitoring, while publishing, advertising spend and customer-facing decisions remain under human approval.</p>
+          </details>
         </article>
         <article>
           <h3><a href="https://geopulse-insights.vercel.app/" target="_blank" rel="noopener noreferrer">GeoPulse (archived)</a> - Geopolitical Intelligence Dashboard</h3>
           <p>Archived demo — the daily pipeline ran live through April 2026 and is now paused. Preserved as a working snapshot</p>
-          <p>Full-stack production dashboard built with Next.js, Python, and Vercel, delivering daily geopolitical intelligence with zero manual intervention.</p>
+          <details class="project-details">
+            <summary>More about the project</summary>
+            <p>Full-stack production dashboard built with Next.js, Python, and Vercel, delivering daily geopolitical intelligence with zero manual intervention.</p>
           <p>Engineered a self-updating pipeline: scheduled GitHub Actions trigger automated web search, Claude synthesises and structures the findings as validated JSON, and the frontend renders the briefing. Owned pipeline orchestration, structured-output parsing, and retry/error handling end to end.</p>
+          </details>
         </article>
       </div>
     </section>
@@ -158,6 +172,15 @@
         </li>
       </ol>
     </section>
+    <footer class="site-footer">
+      <nav class="links" aria-label="Contact links">
+        <a href="mailto:menonakshay1997@gmail.com">email</a>
+        <a href="assets/documents/Akshay_Menon_CV.pdf" target="_blank" rel="noopener noreferrer">cv</a>
+        <a href="https://www.linkedin.com/in/akshaymenon108/" target="_blank" rel="noopener noreferrer">linkedin</a>
+        <a href="https://github.com/akshaymenon" target="_blank" rel="noopener noreferrer">github</a>
+      </nav>
+      <span class="footer-name">Akshay Menon</span>
+    </footer>
   </main>
 </body>
 </html>
