@@ -29,7 +29,7 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--green); outlin
 .skip-link { position: absolute; top: 12px; left: 12px; z-index: 10; padding: 10px 15px; background: var(--ink); color: var(--paper); transform: translateY(-160%); }
 .skip-link:focus { transform: translateY(0); color: var(--paper); }
 .page { position: relative; z-index: 1; width: min(var(--max), calc(100% - 48px)); margin: 0 auto; padding: 90px 0 60px; }
-.intro { position: relative; margin-bottom: 55px; }
+.intro { grid-column: 2; grid-row: 1; min-width: 0; margin-bottom: 14px; }
 h1, h2, h3, p, ol { margin-top: 0; }
 h1 { margin-bottom: 10px; font: 400 clamp(38px, 4.4vw, 56px)/1.13 Georgia, "Times New Roman", serif; letter-spacing: -1.7px; }
 .role { color: var(--green); font-size: 13px; font-weight: 500; margin-bottom: 24px; }
@@ -37,7 +37,7 @@ p { color: var(--muted); margin-bottom: 18px; }
 .intro-content > p { max-width: 680px; }
 .intro-lead { color: var(--ink); font-size: 22px; line-height: 1.5; margin-bottom: 20px; }
 .links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 25px; font-size: 14px; }
-.section { border-top: 1px solid var(--line); padding-top: 30px; margin-top: 38px; }
+.section { position: relative; grid-column: 2; min-width: 0; border-top: 1px solid var(--line); padding-top: 30px; margin-top: 38px; }
 h2 { margin-bottom: 25px; color: var(--ink); font: 400 29px/1.3 Georgia, "Times New Roman", serif; letter-spacing: -0.5px; }
 .timeline { list-style: none; padding: 0; display: grid; gap: 22px; margin-bottom: 24px; }
 .timeline li { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 28px; }
@@ -71,40 +71,39 @@ article p { font-size: 14px; line-height: 1.7; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } a { transition: none; } }
 
-/* Artwork has dedicated grid cells, never negative offsets over text. */
-.page { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 760px) minmax(0, 1fr); column-gap: 24px; width: min(1320px, calc(100% - 48px)); padding-top: 76px; }
-.intro { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; margin-bottom: 12px; }
-.intro-content { grid-column: 2; min-width: 0; }
-.section { grid-column: 2; min-width: 0; }
-.scene { pointer-events: none; min-width: 0; align-self: center; }
-.scene img { display: block; width: 100%; height: auto; object-fit: contain; }
-.scene--verandah { grid-column: 1; grid-row: 1; }
-.scene--backwater { grid-column: 3; grid-row: 4; }
+
+/* Approved composition: taller scenes frame the text in reserved columns. */
+.page { display: grid; grid-template-columns: clamp(200px, 20vw, 280px) minmax(0, 1fr) clamp(180px, 18vw, 260px); column-gap: 28px; width: min(1356px, calc(100% - 48px)); padding-top: 84px; }
+.intro-content { min-width: 0; }
+.experience { grid-row: 2; }
+.projects { grid-row: 3; }
 .education { grid-row: 4; }
-.mobile-scene { display: none; }
-h2 { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.detail { display: inline-block; object-fit: contain; pointer-events: none; flex: 0 0 auto; }
-.detail--leaf { width: 46px; height: 38px; transform: rotate(-12deg); }
-.detail--ball { width: 38px; height: 38px; transform: rotate(9deg); }
+.scene { min-width: 0; pointer-events: none; }
+.scene img { display: block; width: 100%; height: auto; object-fit: contain; }
+.scene--verandah { grid-column: 1; grid-row: 1 / span 2; align-self: start; margin-top: 70px; }
+.scene--backwater { grid-column: 3; grid-row: 3 / span 2; align-self: end; margin-bottom: 18px; }
+.detail { object-fit: contain; pointer-events: none; }
+.detail--leaf { position: absolute; width: 66px; height: 55px; top: -36px; right: 24px; transform: rotate(-35deg); }
+.detail--ball { position: absolute; width: 40px; height: 40px; top: -26px; left: 74%; transform: rotate(7deg); }
 .links { align-items: center; }
-.detail--chai { width: 47px; height: 50px; margin-left: auto; }
+.detail--chai { width: 52px; height: 58px; margin-left: 0; flex: 0 0 auto; }
+.mobile-scene { display: none; }
 @media (max-width: 1199px) {
   .page { display: block; width: min(760px, calc(100% - 48px)); padding-top: 48px; }
-  .intro { display: block; margin-bottom: 40px; }
-  .scene--verandah { display: none; }
-  .mobile-scene { display: block; margin: 12px 0 22px; }
-  .mobile-scene img { display: block; width: min(100%, 340px); height: 170px; object-fit: contain; object-position: left center; }
-  .scene--backwater { width: min(100%, 320px); margin: 22px 0 0 auto; }
-  .scene--backwater img { height: 170px; object-fit: contain; object-position: right center; }
+  .intro { display: block; margin-bottom: 36px; }
+  .scene { display: none; }
+  .mobile-scene { display: flex; justify-content: flex-end; margin: 14px 0 4px; }
+  .mobile-scene img { display: block; width: 185px; max-width: 100%; height: 96px; object-fit: contain; }
 }
 @media (max-width: 620px) {
-  .page { width: calc(100% - 40px); padding-top: 34px; }
-  .mobile-scene { margin: 8px 0 20px; }
-  .mobile-scene img { width: min(100%, 300px); height: 145px; }
-  .scene--backwater { width: min(100%, 280px); }
-  .scene--backwater img { height: 140px; }
-  .detail--leaf { width: 36px; height: 30px; }
-  .detail--ball { width: 32px; height: 32px; }
-  .detail--chai { width: 39px; height: 42px; }
+  .page { width: calc(100% - 40px); padding-top: 36px; }
+  .intro { margin-bottom: 26px; }
+  .mobile-scene img { width: 160px; height: 85px; }
+  .detail--leaf { width: 49px; height: 42px; top: -28px; right: 7px; }
+  .detail--ball { width: 35px; height: 35px; top: -23px; left: auto; right: 24px; }
+  .detail--chai { width: 46px; height: 50px; }
 }
-@media print { .page { display: block; width: 100%; padding: 0; } .scene, .mobile-scene, .detail { display: none; } }
+@media print {
+  .page { display: block; width: 100%; padding: 0; }
+  .scene, .mobile-scene, .detail { display: none; }
+}
