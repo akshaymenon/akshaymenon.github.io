@@ -178,13 +178,17 @@ h1 { font-size: clamp(40px, 4.6vw, 62px); }
   .career-roles strong { font-size: 13px; }
 }
 
-/* The elephant belongs to the landscape, with text in a separate column. */
-.chapter-art { grid-column: 2; grid-row: 1 / span 2; align-self: start; display: flex; flex-direction: column; pointer-events: none; }
-.chapter-art .scene--backwater { margin-top: 38px; }
-.scene-elephant { position: relative; display: block; width: 135px; height: auto; margin: -32px 0 0 24px; }
-@media (max-width: 1000px) { .scene-elephant { width: 112px; margin-left: 12px; } }
+/* Decorative landmarks have reserved space above their section dividers. */
+.experience { margin-top: 78px; }
+.experience h2 { padding-right: 130px; }
+.detail--phonebox { position: absolute; width: 110px; height: auto; top: -70px; right: 10px; }
+.education { margin-top: 108px; }
+.detail--elephant-divider { position: absolute; width: 112px; height: auto; top: -86px; right: 18px; }
 @media (max-width: 700px) {
-  .chapter-art { display: none; }
-  .mobile-water .scene-elephant { width: 68px; height: auto; margin: -24px 0 0 4px; }
+  .experience { margin-top: 56px; }
+  .experience h2 { padding-right: 100px; }
+  .detail--phonebox { width: 88px; top: -44px; right: 4px; }
+  .education { margin-top: 92px; }
+  .detail--elephant-divider { width: 94px; top: -73px; right: 12px; }
 }
-@media print { .chapter-art { display: none; } }
+@media print { .experience, .education { margin-top: 28px; } .experience h2 { padding-right: 0; } }
