@@ -96,7 +96,8 @@ h1 { font-size: clamp(40px, 4.6vw, 62px); }
 .projects { grid-column: 1; grid-row: 1; margin-top: 0; }
 .education { grid-column: 1; grid-row: 2; margin-top: 28px; }
 .cricket-project { position: relative; }
-.detail--ball { display: inline-block; width: 37px; height: 37px; vertical-align: middle; margin: -5px 7px -3px 0; transform: rotate(8deg); }
+.cricket-project-name { white-space: nowrap; }
+.detail--ball { display: inline-block; width: 37px; height: 37px; vertical-align: middle; margin: -5px 0 -3px 7px; transform: rotate(8deg); }
 .lower-chapter article p { max-width: 820px; }
 .lower-chapter .timeline { display: grid; grid-template-columns: 1fr; gap: 23px; }
 .lower-chapter .timeline li { grid-template-columns: 1fr; gap: 5px; }
