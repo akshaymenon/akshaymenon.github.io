@@ -82,12 +82,11 @@ h1 { font-size: clamp(40px, 4.6vw, 62px); }
 .scene img { display: block; width: 100%; height: auto; object-fit: contain; }
 .scene--verandah { float: left; width: 330px; margin: 0 18px 20px 0; shape-outside: url('../img/porch-atmosphere.webp'); shape-image-threshold: 0.12; shape-margin: 22px; }
 .intro .links { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 22px; min-height: 58px; }
-.email-link { display: inline-flex; align-items: center; gap: 4px; }
+.email-contact { display: inline-flex; align-items: center; gap: 4px; }
 .email-link span { text-decoration: underline; text-underline-offset: 4px; }
 .email-link { text-decoration: none; }
-.email-link:hover .detail--chai { transform: rotate(-5deg) translateY(-2px); }
 .detail { object-fit: contain; pointer-events: none; }
-.detail--chai { width: 47px; height: 54px; transition: transform 180ms ease; }
+.detail--chai { width: 47px; height: 54px; }
 .experience { max-width: none; margin: 16px 0 0; padding-top: 28px; }
 
 .detail--leaf { position: absolute; width: 68px; height: 52px; top: -30px; left: 18px; transform: rotate(-42deg); transform-origin: 25% 85%; }
@@ -136,7 +135,7 @@ h1 { font-size: clamp(40px, 4.6vw, 62px); }
   .mobile-water img { display: block; width: 100%; height: auto; }
   .project-details { clear: both; }
 }
-@media (prefers-reduced-motion: reduce) { .detail--chai, .detail--ball { transition: none; } .email-link:hover .detail--chai { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .detail--ball { transition: none; } }
 @media print { .page { width: 100%; padding: 0; } .scene, .mobile-scene, .mobile-water, .detail { display: none; } .intro-content { display: block; } }
 
 /* Company grouping preserves all role titles, dates and employer identity. */
