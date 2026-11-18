@@ -13,44 +13,6 @@
     return decodedImages.get(source);
   }
 
-  function startClocks() {
-    const row = document.querySelector(".clock-row");
-    const button = row.querySelector("button");
-    const zones = { kochi: "Asia/Kolkata", london: "Europe/London" };
-    const clocks = Object.entries(zones).map(([place, timeZone]) => ({
-      element: row.querySelector(`[data-clock="${place}"]`),
-      formatter: new Intl.DateTimeFormat("en-GB", { timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }),
-    }));
-    let timer;
-    let paused = false;
-
-    function tick() {
-      clearTimeout(timer);
-      if (paused || document.hidden) return;
-
-      const now = new Date();
-      for (const { element, formatter } of clocks) {
-        const local = formatter.format(now);
-        const [hours, minutes] = local.split(":");
-        const hour = Number(hours);
-        element.dateTime = local;
-        element.textContent = `${hour % 12 || 12}:${minutes}${hour < 12 ? "am" : "pm"}`;
-      }
-      row.hidden = false;
-      timer = setTimeout(tick, 60_000 - (Date.now() % 60_000));
-    }
-
-    button.addEventListener("click", () => {
-      paused = !paused;
-      root.classList.toggle("updates-paused", paused);
-      button.textContent = paused ? "Resume updates" : "Pause updates";
-      tick();
-    });
-    document.addEventListener("visibilitychange", tick);
-    window.addEventListener("pageshow", tick);
-    tick();
-  }
-
   function swayPalm() {
     const motion = matchMedia("(prefers-reduced-motion: no-preference)");
     if (!motion.matches || !CSS.supports("clip-path", "polygon(0 0, 100% 0, 0 100%)")) return;
@@ -162,7 +124,6 @@
     connectStage();
   }
 
-  startClocks();
   swayPalm();
   startStage();
 })();
