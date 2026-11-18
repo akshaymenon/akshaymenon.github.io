@@ -1,9 +1,11 @@
-# Portfolio details
+# Portfolio artwork
 
-Generated with the built-in OpenAI image generation tool, with transparent backgrounds; encoded as WebP with alpha preserved.
+The site uses transparent WebP illustrations. The Kerala verandah, fishing net with chai and a cricket ball, and London phone box are original portfolio scenes. The tea leaf and elephant sit on the dividers. The elephant wears a gold Nettipattam.
 
-- `elephant-nettipattam.webp`: A quiet Kerala Asian elephant, entire body visible, with a restrained gold Nettipattam, lowered trunk and a small olive foliage cluster. Detailed botanical watercolor, muted gold and natural grey; no rider, procession or text.
+The new watercolor scenes use architectural references for their silhouettes and the verandah as a style reference.
 
-The original verandah and fishing-net scenes are retained. The elephant straddles the divider above Education on desktop and mobile. A red London telephone box sits at the right edge of Experience; both have reserved space that keeps them clear of the text.
+- [Charminar](https://www.tourism.telangana.gov.in/attractions/charminar) in Hyderabad, with the gateway, corner minarets and a small market awning.
+- [Rutland Building](https://www.lboro.ac.uk/about/history/then-now/) at Loughborough University, seen from Fountain Lawn.
+- [Chepauk](https://www.hopkins.co.uk/projects/sport/chepauk-stadium/) in Chennai, with the segmented canopies, yellow stands and cricket wicket.
 
-- `london-phonebox.webp`: Built-in OpenAI image generation. A full, slightly weathered red London telephone box in three-quarter view on a tiny grey pavement patch, detailed watercolor and ink, muted warm red, transparent background; no people, additional objects or readable generated labels. Displayed as a small portrait detail beside Experience.
+The inline artwork is the source for the desktop stage. Add a phase-specific variant to its art wrapper with a matching attribute such as `data-night-src="img/veranda@night.webp"`. Keep its aspect ratio and transparent outline aligned with the original. For the verandah, keep the roof and palm in the same positions so the two crops line up. The browser uses the base art and tint while a registered variant loads or if loading fails.
