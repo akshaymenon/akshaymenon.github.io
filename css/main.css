@@ -90,7 +90,7 @@ p { color: var(--muted); margin-bottom: 18px; }
 .company-logo { display: block; width: 100%; height: 38px; }
 .company-logo--miq { --logo: url('../img/companies/miq.png'); }
 .company-logo--dentsu { --logo: url('../img/companies/dentsu.png'); }
-.company-logo--deloitte { --logo: url('../img/companies/deloitte.png'); }
+.company-logo--deloitte { --logo: url('../img/companies/deloitte.png?v=20261118'); }
 
 .career-roles { display: grid; gap: 9px; margin: 0 0 0 80px; }
 .career-roles li { display: grid; grid-template-columns: minmax(0, 1fr) max-content; align-items: start; gap: 16px; }
