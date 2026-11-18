@@ -36,7 +36,7 @@ p { color: var(--muted); margin-bottom: 18px; }
 
 .intro { display: flow-root; }
 .intro-content { display: contents; }
-.art { position: relative; isolation: isolate; pointer-events: none; }
+.art { position: relative; pointer-events: none; }
 .art > img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .role { color: var(--green); font-size: clamp(17px, 2vw, 20px); font-weight: 650; line-height: 1.35; margin-bottom: 22px; }
 .intro-lead { color: var(--ink); font-size: 22px; line-height: 1.5; }
@@ -126,51 +126,7 @@ article p { font-size: 14px; line-height: 1.7; }
 .project-details p:first-of-type { margin-top: 8px; }
 .project-details p:last-child { margin-bottom: 0; }
 
-[data-kochi-phase="dawn"] [data-place="kochi"],
-[data-london-phase="dawn"] [data-place="london"] {
-  --art-tint: #ffcea4;
-  --art-tint-opacity: 0.22;
-}
-[data-kochi-phase="day"] [data-place="kochi"],
-[data-london-phase="day"] [data-place="london"] {
-  --art-tint: #fff4d6;
-  --art-tint-opacity: 0.06;
-}
-[data-kochi-phase="dusk"] [data-place="kochi"],
-[data-london-phase="dusk"] [data-place="london"] {
-  --art-tint: #be825d;
-  --art-tint-opacity: 0.44;
-  --art-blend: multiply;
-}
-[data-kochi-phase="night"] [data-place="kochi"],
-[data-london-phase="night"] [data-place="london"] {
-  --art-tint: #465c8b;
-  --art-tint-opacity: 0.68;
-  --art-blend: multiply;
-  --lamp-opacity: 0.48;
-}
-
 @supports (mask-image: none) or (-webkit-mask-image: none) {
-  /* The overlay starts when its image and alpha mask are available. */
-  .art[data-masked]::before, .scene-phonebox[data-masked]::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    -webkit-mask: var(--art-image) center / contain no-repeat;
-    mask: var(--art-image) center / contain no-repeat;
-    mask-mode: alpha;
-  }
-  .art::before {
-    background: var(--art-tint, transparent);
-    opacity: var(--art-tint-opacity, 0);
-    mix-blend-mode: var(--art-blend, normal);
-  }
-  .scene-phonebox::after {
-    background: radial-gradient(ellipse at 53% 43%, #ffdd9e 0%, transparent 29%);
-    opacity: var(--lamp-opacity, 0);
-    mix-blend-mode: screen;
-  }
-  .art[data-variant]::before, .art[data-variant]::after { content: none; }
   .company-logo {
     background: var(--ink);
     -webkit-mask: var(--logo) center / contain no-repeat;

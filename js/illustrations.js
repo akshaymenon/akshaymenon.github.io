@@ -2,7 +2,6 @@
   "use strict";
 
   const root = document.documentElement;
-  const artwork = new Map();
   const decodedImages = new Map();
 
   function decodeImage(source) {
@@ -14,67 +13,11 @@
     return decodedImages.get(source);
   }
 
-  function paintArt(art, source) {
-    const { element, image, baseSource } = art;
-    if (image.src !== source) image.src = source;
-    element.style.setProperty("--art-image", `url(${JSON.stringify(source)})`);
-    element.setAttribute("data-masked", "");
-    element.toggleAttribute("data-variant", source !== baseSource);
-  }
-
-  function syncVariant(art) {
-    if (!art.image.complete || !art.image.naturalWidth) return;
-
-    const phase = root.getAttribute(`data-${art.element.dataset.place}-phase`);
-    const variant = art.element.getAttribute(`data-${phase}-src`);
-    const source = variant ? new URL(variant, document.baseURI).href : art.baseSource;
-    if (source === art.requestedSource) return;
-
-    art.requestedSource = source;
-    paintArt(art, art.baseSource);
-    if (source !== art.baseSource) {
-      decodeImage(source).then((ready) => {
-        if (ready && art.requestedSource === source) paintArt(art, source);
-      });
-    }
-  }
-
-  function registerArt(element) {
-    const image = element.firstElementChild;
-    const art = { element, image, baseSource: image.src };
-    artwork.set(element, art);
-    const onLoad = () => {
-      paintArt(art, image.src);
-      syncVariant(art);
-    };
-    image.addEventListener("load", onLoad);
-    if (image.complete && image.naturalWidth) onLoad();
-  }
-
-  function cloneArt(element) {
-    const copy = element.cloneNode(true);
-    copy.removeAttribute("data-masked");
-    copy.removeAttribute("data-variant");
-    copy.firstElementChild.loading = "eager";
-    copy.firstElementChild.src = artwork.get(element).baseSource;
-    return copy;
-  }
-
-  function phaseForHour(hour) {
-    if (hour < 5 || hour >= 20) return "night";
-    if (hour < 8) return "dawn";
-    if (hour < 17) return "day";
-    return "dusk";
-  }
-
   function startClocks() {
     const row = document.querySelector(".clock-row");
     const button = row.querySelector("button");
-    const requestedPhase = new URLSearchParams(location.search).get("time");
-    const forcedPhase = ["dawn", "day", "dusk", "night"].includes(requestedPhase) ? requestedPhase : null;
     const zones = { kochi: "Asia/Kolkata", london: "Europe/London" };
     const clocks = Object.entries(zones).map(([place, timeZone]) => ({
-      place,
       element: row.querySelector(`[data-clock="${place}"]`),
       formatter: new Intl.DateTimeFormat("en-GB", { timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }),
     }));
@@ -86,21 +29,12 @@
       if (paused || document.hidden) return;
 
       const now = new Date();
-      for (const { place, element, formatter } of clocks) {
+      for (const { element, formatter } of clocks) {
         const local = formatter.format(now);
         const [hours, minutes] = local.split(":");
         const hour = Number(hours);
         element.dateTime = local;
         element.textContent = `${hour % 12 || 12}:${minutes}${hour < 12 ? "am" : "pm"}`;
-
-        const attribute = `data-${place}-phase`;
-        const phase = forcedPhase ?? phaseForHour(hour);
-        if (root.getAttribute(attribute) !== phase) {
-          root.setAttribute(attribute, phase);
-          for (const art of artwork.values()) {
-            if (art.element.dataset.place === place) syncVariant(art);
-          }
-        }
       }
       row.hidden = false;
       timer = setTimeout(tick, 60_000 - (Date.now() % 60_000));
@@ -122,12 +56,11 @@
     if (!motion.matches || !CSS.supports("clip-path", "polygon(0 0, 100% 0, 0 100%)")) return;
 
     const porch = document.querySelector(".porch");
-    decodeImage(artwork.get(porch).baseSource).then((ready) => {
+    decodeImage(porch.firstElementChild.src).then((ready) => {
       if (!ready || !motion.matches) return;
-      const palm = cloneArt(porch);
+      const palm = porch.cloneNode(true);
       palm.classList.replace("porch", "palm-layer");
       porch.before(palm);
-      registerArt(palm);
       porch.parentElement.classList.add("palm-ready");
     });
   }
@@ -154,7 +87,7 @@
       if (name === wanted) return;
       wanted = name;
       const band = sources.get(name);
-      const ready = await decodeImage(artwork.get(band).baseSource);
+      const ready = await decodeImage(band.firstElementChild.src);
       if (wanted !== name || !desktop.matches) return;
       if (!ready) {
         chapters.classList.remove("has-stage");
@@ -164,10 +97,10 @@
 
       let layer = layers.get(name);
       if (!layer) {
-        layer = cloneArt(band);
+        layer = band.cloneNode(true);
+        layer.firstElementChild.loading = "eager";
         layer.classList.replace("scene-band", "stage-scene");
         stage.append(layer);
-        registerArt(layer);
         layers.set(name, layer);
         // Give the new layer a rendered frame at zero opacity.
         await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
@@ -229,7 +162,6 @@
     connectStage();
   }
 
-  document.querySelectorAll(".art[data-place]").forEach(registerArt);
   startClocks();
   swayPalm();
   startStage();
